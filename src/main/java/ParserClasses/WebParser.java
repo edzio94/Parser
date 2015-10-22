@@ -1,4 +1,4 @@
-package ParsersClass;
+package ParserClasses;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

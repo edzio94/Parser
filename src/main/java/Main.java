@@ -1,11 +1,7 @@
 import java.util.Scanner;
-import java.io.Console;
-import java.io.IOException;
 
-import ParsersClass.*;
-import sun.plugin.navig.motif.Worker;
-
-import static java.lang.System.out;
+import ParserClasses.ParserFactory;
+import ParserClasses.*;
 
 /**
  * Created by lukasz on 21.10.15.

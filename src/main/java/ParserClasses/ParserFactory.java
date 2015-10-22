@@ -1,4 +1,4 @@
-package ParsersClass;
+package ParserClasses;
 
 /**
  * Created by lukasz on 21.10.15.
