@@ -6,8 +6,8 @@ package ParserClasses;
 public class ParserFactory {
     public static AbstractReader create(String input) {
         if (input.startsWith("http://") || input.startsWith("www"))
-            return new WebParser(input);
-        return new FileParser(input);
+            return new WebReader(input);
+        return new FileReader(input);
 
     }
 

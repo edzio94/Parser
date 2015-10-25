@@ -19,11 +19,11 @@ import java.util.List;
  *
  * Class that works with .html files on hard drive
  */
-public class FileParser implements AbstractReader {
+public class FileReader implements AbstractReader {
     Document doc;
     File file;
 
-    public FileParser(String input) {
+    public FileReader(String input) {
 
         file = new File(input);
         if (!file.exists())

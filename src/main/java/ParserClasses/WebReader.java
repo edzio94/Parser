@@ -8,14 +8,14 @@ import java.io.IOException;
 /**
  * Created by lukasz on 21.10.15.
  */
-public class WebParser implements AbstractReader {
+public class WebReader implements AbstractReader {
 
     private String input;
     public Document doc;
     private Links links;
 
 
-    public WebParser(String input) {
+    public WebReader(String input) {
         if(input.startsWith("www"))
             this.input = new String("http://"+input);
         else
