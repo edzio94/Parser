@@ -6,7 +6,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,34 +22,31 @@ import java.util.List;
 public class FileParser implements AbstractReader {
     Document doc;
     File file;
-    Links links;
 
     public FileParser(String input) {
-        this.file = new File(input);
-        this.links = new Links();
+
+        file = new File(input);
+        if (!file.exists())
+            try {
+                throw new FileNotFoundException("File not found!");
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found !");
+                e.printStackTrace();
+                System.exit(0);
+            }
+
     }
 
-    public List<String> read() {
-        List<String> tempLinks = new ArrayList<String>();
+    public Document read() {
         try {
             doc = Jsoup.parse(file, "UTF-8");
         } catch (IOException e) {
+            System.out.println("Parse function cannot be executed!");
             e.printStackTrace();
         }
 
-        Elements links = doc.select("a[href]");
 
-        for (Element link : links) {
-            if (!link.attr("href").equals("#"))
-            tempLinks.add(link.attr("href"));
-        }
-
-        return tempLinks;
-
-    }
-
-    public List<String> read(Boolean domainOnly, String URL) {
-        return null;
+        return doc;
     }
 
 }

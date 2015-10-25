@@ -17,11 +17,12 @@ public class ControlManager {
     private Boolean isURL;
     private String URL;
     private Boolean domainOnly;
-    private Links links;
+    private Parser parser;
 
     public ControlManager(AbstractReader abstractReader) {
         this.reader = abstractReader;
-        this.links = new Links();
+        this.parser = new Parser();
+
     }
 
     public void setURL(String URL) {
@@ -32,31 +33,25 @@ public class ControlManager {
     public void mainWork(String URL) {
         List<String> tmp = new ArrayList<String>();
         setURL(URL);
-        if (isURL) {
+        if (isURL)
             domainOnly = checkIfDomain();
-            tmp = reader.read(domainOnly, URL);
+        else
+            domainOnly = false;
+            parser.Parse(reader.read(),this.domainOnly,this.URL);
 
-            saveLinks(tmp);
-        } else {
-            tmp = reader.read();
-            saveLinks(tmp);
-
-        }
         if (checkToShowLinks()) {
             showLinks();
-            boolean exit = false;
-            while (!exit) {
+            while (true) {
                 String option = getNumber();
-                if (option.equals("Q")) {
-                    exit = true;
-                    break;
-                } else {
+                if (option.equals("Q")) break;
+                else {
                     int number = Integer.parseInt(option);
-                    htmlReader = new HTMLReader(links.getlinks().get(number - 1).toString());
+                    htmlReader = new HTMLReader(Links.getlinks().get(number - 1).toString());
                     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                     try {
                         br.readLine();
                     } catch (IOException e) {
+                        System.out.println("Cannot read key!");
                         e.printStackTrace();
                     }
                     showLinks();
@@ -106,13 +101,7 @@ public class ControlManager {
     }
 
     private void showLinks() {
-        links.showAllLinks();
+        Links.showAllLinks();
     }
-
-    public void saveLinks(List<String> tempLinks) {
-        links.setlinks(tempLinks);
-
-    }
-
 
 }

@@ -8,16 +8,16 @@ import java.util.List;
  * Created by lukasz on 22.10.15.
  */
 
-public class Links {
+public final class Links {
 
-    private List<String> links;
+    private static List<String> links;
 
 
-    public Links() {
+    private Links() {
         links = new ArrayList<String>();
     }
 
-    protected void showAllLinks() {
+    protected static void showAllLinks() {
         int i = 0;
         for (String link : links) {
             ++i;
@@ -26,14 +26,17 @@ public class Links {
         }
     }
 
-    public List<String> getlinks() {
+    public static List<String> getlinks() {
         return links;
     }
 
-    public void setlinks(List<String> linksfromURL) {
+    public static void setlinks(List<String> linksfromURL) {
+        links = new ArrayList<String>();
+
         for (String q : linksfromURL) {
-            this.links.add(q);
+            links.add(q);
         }
+
     }
 
 }
