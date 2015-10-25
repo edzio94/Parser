@@ -34,12 +34,12 @@ public class ControlManager {
         List<String> tmp = new ArrayList<String>();
         setURL(URL);
         if (isURL)
-            domainOnly = checkIfDomain();
+            domainOnly = askIfCheckDomainOnly();
         else
             domainOnly = false;
             parser.Parse(reader.read(),this.domainOnly,this.URL);
 
-        if (checkToShowLinks()) {
+        if (askToShowLinks()) {
             showLinks();
             while (true) {
                 String option = getNumber();
@@ -73,7 +73,7 @@ public class ControlManager {
             return false;
     }
 
-    private Boolean checkIfDomain() {
+    private Boolean askIfCheckDomainOnly() {
         Scanner in = new Scanner(System.in);
         System.out.print("Get links only from domain?[Y/N]");
         String decision = in.nextLine();
@@ -83,7 +83,7 @@ public class ControlManager {
             return false;
     }
 
-    private Boolean checkToShowLinks() {
+    private Boolean askToShowLinks() {
         Scanner in = new Scanner(System.in);
         System.out.print("Show links?[Y/N]");
         String decision = in.nextLine();
