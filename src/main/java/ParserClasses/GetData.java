@@ -8,9 +8,6 @@ import java.util.Scanner;
  * Created by lukasz on 26.10.15.
  */
 public class GetData {
-    private Boolean isURL;
-    private String linkOption;
-
 
     public Boolean checkIsURL(String input) {
         return (input.startsWith("www") ||
@@ -30,19 +27,4 @@ public class GetData {
         return (decision.equals("Y") | decision.equals("y"));
     }
 
-    public Boolean getIsURL() {
-        return isURL;
-    }
-
-    public void setIsURL(Boolean isURL) {
-        this.isURL = isURL;
-    }
-
-    public String getLinkOption() {
-        return linkOption;
-    }
-
-    public void setLinkOption(String linkOption) {
-        this.linkOption = linkOption;
-    }
 }

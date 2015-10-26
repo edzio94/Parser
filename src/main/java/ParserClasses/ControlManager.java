@@ -27,7 +27,7 @@ public class ControlManager {
 
     public void mainWork(String URL) {
         setURL(URL);
-        if (getData.getIsURL())
+        if (dataHolder.getIsURL())
             this.dataHolder.setDomainOnly(this.getData.checkDecision("Do you want see link from domain only?[Y/N]"));
         else
             this.dataHolder.setDomainOnly(false);
@@ -38,10 +38,10 @@ public class ControlManager {
         if (this.getData.checkDecision("Show links?[Y/N]")) {
             showLinks();
             while (true) {
-                this.getData.setLinkOption(getData.getNumber());
-                if (this.getData.getLinkOption().equals("Q")) break;
+                this.dataHolder.setLinkOption(getData.getNumber());
+                if (this.dataHolder.getLinkOption().equals("Q")) break;
                 else {
-                    int number = Integer.parseInt(this.getData.getLinkOption());
+                    int number = Integer.parseInt(this.dataHolder.getLinkOption());
                     this.dataHolder.setInput(Links.getlinks().get(number - 1));
                     WebReader webReader = new WebReader(this.dataHolder.getInput());
                     System.out.println(webReader.read());
@@ -65,7 +65,7 @@ public class ControlManager {
 
     public void setURL(String URL) {
         this.dataHolder.setInput(URL);
-        this.getData.setIsURL(this.getData.checkIsURL(URL));
+        this.dataHolder.setIsURL(this.getData.checkIsURL(URL));
     }
 
 
