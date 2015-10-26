@@ -17,25 +17,13 @@ public final class Links {
         links = new ArrayList<String>();
     }
 
-    protected static void showAllLinks() {
-        int i = 0;
-        for (String link : links) {
-            ++i;
-
-            System.out.println(i + "." + link);
-        }
-    }
-
     public static List<String> getlinks() {
         return links;
     }
 
     public static void setlinks(List<String> linksfromURL) {
-        links = new ArrayList<String>();
-
-        for (String q : linksfromURL) {
-            links.add(q);
-        }
+        links = new ArrayList<>();
+        links = linksfromURL;
 
     }
 

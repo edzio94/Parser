@@ -16,27 +16,24 @@ public class WebReader implements AbstractReader {
 
 
     public WebReader(String input) {
-        if(input.startsWith("www"))
-            this.input = new String("http://"+input);
+        if (input.startsWith("www"))
+            this.input = new String("http://" + input);
         else
             this.input = input;
 
     }
 
     public Document read() {
-            try {
-                doc = Jsoup.connect(input).get();
-            } catch (IOException e) {
+        try {
+            doc = Jsoup.connect(input).get();
+        } catch (IOException e) {
 
-                System.out.println("Cannot read URL input!");
-                e.printStackTrace();
-            }
+            System.out.println("Cannot read URL input!");
+            e.printStackTrace();
+        }
 
         return doc;
     }
-
-
-
 
 
 }

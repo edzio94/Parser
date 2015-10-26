@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by lukasz on 21.10.15.
- *
+ * <p>
  * Class that works with .html files on hard drive
  */
 public class FileReader implements AbstractReader {

@@ -17,8 +17,7 @@ public class Parser {
     Document doc;
 
 
-    public void Parse(Document doc,Boolean domainOnly,String input)
-    {
+    public void Parse(Document doc, Boolean domainOnly, String input) {
         List<String> tempLinks = new ArrayList<String>();
         this.doc = doc;
         Elements links = doc.select("a[href]");
